@@ -8,7 +8,6 @@ const app_module_1 = require("./app.module");
 const swagger_1 = require("@nestjs/swagger");
 const cookieParser = require("cookie-parser");
 const fs = require("fs");
-const public_interceptor_1 = require("./common/interceptors/public.interceptor");
 async function bootstrap() {
     const httpsOptions = process.env.MODE === 'prod'
         ? {
@@ -30,7 +29,6 @@ async function bootstrap() {
         },
         httpsOptions,
     });
-    app.useGlobalInterceptors(new public_interceptor_1.PublicInterceptor());
     app.setGlobalPrefix('/api');
     app.useGlobalFilters(new http_exception_filter_1.HttpExceptionFilter());
     app.useGlobalInterceptors(new response_interceptor_1.ResponseInterceptor());
