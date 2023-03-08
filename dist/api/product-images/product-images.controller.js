@@ -15,6 +15,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.ProductImagesController = void 0;
 const common_1 = require("@nestjs/common");
 const platform_express_1 = require("@nestjs/platform-express");
+const skip_auth_decorator_1 = require("../../common/decorators/skip-auth.decorator");
 const arraySharp_pipe_1 = require("../../common/pipe/arraySharp.pipe");
 const product_images_service_1 = require("./product-images.service");
 let ProductImagesController = class ProductImagesController {
@@ -34,6 +35,7 @@ __decorate([
     __metadata("design:returntype", Promise)
 ], ProductImagesController.prototype, "uploadProductImage", null);
 ProductImagesController = __decorate([
+    (0, skip_auth_decorator_1.Public)(),
     (0, common_1.Controller)('product-images'),
     __metadata("design:paramtypes", [product_images_service_1.ProductImagesService])
 ], ProductImagesController);
