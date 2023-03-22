@@ -48,8 +48,8 @@ let CartsService = class CartsService {
     async updateCart() {
         return await this.cartsRepository.find();
     }
-    async deleteCart() {
-        return await this.cartsRepository.find();
+    async deleteCart(id) {
+        return await this.cartsRepository.delete(id);
     }
 };
 CartsService = __decorate([

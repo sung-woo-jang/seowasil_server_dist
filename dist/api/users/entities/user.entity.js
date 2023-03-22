@@ -61,7 +61,7 @@ __decorate([
     __metadata("design:type", String)
 ], User.prototype, "currentHashedRefreshToken", void 0);
 __decorate([
-    (0, typeorm_1.OneToMany)(() => deliver_address_entity_1.DeliverAddress, (order) => order.user, {
+    (0, typeorm_1.OneToMany)(() => deliver_address_entity_1.DeliverAddress, (address) => address.user, {
         cascade: true,
     }),
     __metadata("design:type", Array)
@@ -73,7 +73,7 @@ __decorate([
     __metadata("design:type", Array)
 ], User.prototype, "orders", void 0);
 __decorate([
-    (0, typeorm_1.OneToMany)(() => cart_entity_1.Cart, (order) => order),
+    (0, typeorm_1.OneToMany)(() => cart_entity_1.Cart, (cart) => cart),
     __metadata("design:type", Array)
 ], User.prototype, "cart", void 0);
 User = __decorate([

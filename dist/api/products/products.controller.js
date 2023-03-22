@@ -43,7 +43,6 @@ let ProductsController = class ProductsController {
     }
 };
 __decorate([
-    (0, skip_auth_decorator_1.Public)(),
     (0, common_1.Post)(),
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
@@ -52,14 +51,12 @@ __decorate([
 ], ProductsController.prototype, "createProduct", null);
 __decorate([
     (0, common_1.Get)('/:id'),
-    (0, skip_auth_decorator_1.Public)(),
     __param(0, (0, common_1.Param)('id', common_1.ParseIntPipe)),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Number]),
     __metadata("design:returntype", void 0)
 ], ProductsController.prototype, "getProductDetail", null);
 __decorate([
-    (0, skip_auth_decorator_1.Public)(),
     (0, common_1.Get)(),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", []),
@@ -88,6 +85,7 @@ __decorate([
     __metadata("design:returntype", void 0)
 ], ProductsController.prototype, "restoreProduct", null);
 ProductsController = __decorate([
+    (0, skip_auth_decorator_1.Public)(),
     (0, common_1.Controller)('products'),
     __metadata("design:paramtypes", [products_service_1.ProductsService])
 ], ProductsController);

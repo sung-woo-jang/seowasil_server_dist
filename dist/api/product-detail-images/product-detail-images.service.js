@@ -12,27 +12,31 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.ProductThumbnailService = void 0;
+exports.ProductDetailImagesService = void 0;
 const common_1 = require("@nestjs/common");
 const s3_service_1 = require("../s3/s3.service");
 const typeorm_1 = require("@nestjs/typeorm");
-const product_thumbnail_respsitory_1 = require("./product-thumbnail.respsitory");
-let ProductThumbnailService = class ProductThumbnailService {
-    constructor(productThumbnailRepository, s3Service) {
-        this.productThumbnailRepository = productThumbnailRepository;
+const product_detail_images_respsitory_1 = require("./product-detail-images.respsitory");
+let ProductDetailImagesService = class ProductDetailImagesService {
+    constructor(productDetailImagesRepository, s3Service) {
+        this.productDetailImagesRepository = productDetailImagesRepository;
         this.s3Service = s3Service;
     }
-    async uploadProductThumbnailImage(file) {
-        const key = await this.s3Service.uploadImageToAWS_s3(file, 0);
-        const result = await this.productThumbnailRepository.registerThumbnailImageUrl(key);
+    async uploadProductThumbnailImage(files) {
+        const imageUrl = [];
+        await Promise.all(files.map(async (file, idx) => {
+            const key = await this.s3Service.uploadImageToAWS_s3(file, idx);
+            imageUrl.push(key);
+        }));
+        const result = await this.productDetailImagesRepository.registerDetailImagesUrl(imageUrl);
         return result;
     }
 };
-ProductThumbnailService = __decorate([
+ProductDetailImagesService = __decorate([
     (0, common_1.Injectable)(),
-    __param(0, (0, typeorm_1.InjectRepository)(product_thumbnail_respsitory_1.ProductThumbnailRepository)),
-    __metadata("design:paramtypes", [product_thumbnail_respsitory_1.ProductThumbnailRepository,
+    __param(0, (0, typeorm_1.InjectRepository)(product_detail_images_respsitory_1.ProductDetailImagesRepository)),
+    __metadata("design:paramtypes", [product_detail_images_respsitory_1.ProductDetailImagesRepository,
         s3_service_1.S3Service])
-], ProductThumbnailService);
-exports.ProductThumbnailService = ProductThumbnailService;
-//# sourceMappingURL=product-thumbnail.service.js.map
+], ProductDetailImagesService);
+exports.ProductDetailImagesService = ProductDetailImagesService;
+//# sourceMappingURL=product-detail-images.service.js.map

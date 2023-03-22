@@ -9,21 +9,21 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.ProductThumbnail = void 0;
+exports.ProductDetailImages = void 0;
 const common_entity_1 = require("../../../common/entities/common.entity");
 const typeorm_1 = require("typeorm");
-let ProductThumbnail = class ProductThumbnail extends common_entity_1.CommonEntity {
+let ProductDetailImages = class ProductDetailImages extends common_entity_1.CommonEntity {
 };
 __decorate([
     (0, typeorm_1.Column)({
-        type: 'varchar',
-        comment: '서버에 저장 될 파일명',
+        type: 'simple-array',
+        comment: '서버에 저장 될 상품설명 이미지 파일명',
         nullable: false,
     }),
-    __metadata("design:type", String)
-], ProductThumbnail.prototype, "storedFileName", void 0);
-ProductThumbnail = __decorate([
+    __metadata("design:type", Array)
+], ProductDetailImages.prototype, "storedFileName", void 0);
+ProductDetailImages = __decorate([
     (0, typeorm_1.Entity)()
-], ProductThumbnail);
-exports.ProductThumbnail = ProductThumbnail;
+], ProductDetailImages);
+exports.ProductDetailImages = ProductDetailImages;
 //# sourceMappingURL=product-thumbnail.entity.js.map

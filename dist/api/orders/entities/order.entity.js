@@ -17,6 +17,18 @@ const user_entity_1 = require("../../users/entities/user.entity");
 let Order = class Order extends common_entity_1.CommonEntity {
 };
 __decorate([
+    (0, typeorm_1.Column)({ type: 'varchar', comment: '주문자명', nullable: false }),
+    __metadata("design:type", String)
+], Order.prototype, "name", void 0);
+__decorate([
+    (0, typeorm_1.Column)({ type: 'varchar', comment: '주문자 전화번호', nullable: false }),
+    __metadata("design:type", String)
+], Order.prototype, "phoneNumber", void 0);
+__decorate([
+    (0, typeorm_1.Column)({ type: 'varchar', comment: '배송 요청사항', nullable: true }),
+    __metadata("design:type", String)
+], Order.prototype, "deliveryRequest", void 0);
+__decorate([
     (0, typeorm_1.Column)({ type: 'varchar', comment: '우편번호', nullable: false }),
     __metadata("design:type", String)
 ], Order.prototype, "address1", void 0);
@@ -28,10 +40,6 @@ __decorate([
     (0, typeorm_1.Column)({ type: 'varchar', comment: '상세주소', nullable: false }),
     __metadata("design:type", String)
 ], Order.prototype, "address3", void 0);
-__decorate([
-    (0, typeorm_1.Column)({ type: 'varchar', comment: '배송 요청사항', nullable: true }),
-    __metadata("design:type", String)
-], Order.prototype, "deliveryRequest", void 0);
 __decorate([
     (0, typeorm_1.Column)({ type: 'integer', comment: '주문 수량', nullable: false }),
     __metadata("design:type", Number)

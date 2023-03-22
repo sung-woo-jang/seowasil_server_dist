@@ -28,6 +28,15 @@ __decorate([
     __metadata("design:type", String)
 ], DeliverAddress.prototype, "address3", void 0);
 __decorate([
+    (0, typeorm_1.Column)({
+        type: 'boolean',
+        comment: '기본 배송 주소',
+        nullable: false,
+        default: false,
+    }),
+    __metadata("design:type", Boolean)
+], DeliverAddress.prototype, "isDefault", void 0);
+__decorate([
     (0, typeorm_1.ManyToOne)(() => user_entity_1.User, (user) => user.address, {
         onDelete: 'CASCADE',
     }),

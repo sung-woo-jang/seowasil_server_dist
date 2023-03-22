@@ -30,8 +30,8 @@ let CartsController = class CartsController {
     async updateCart() {
         return await this.cartsService.updateCart();
     }
-    async deleteCart() {
-        return await this.cartsService.deleteCart();
+    async deleteCart(id) {
+        return await this.cartsService.deleteCart(id);
     }
 };
 __decorate([
@@ -56,8 +56,9 @@ __decorate([
 ], CartsController.prototype, "updateCart", null);
 __decorate([
     (0, common_1.Delete)('/:id'),
+    __param(0, (0, common_1.Param)('id', common_1.ParseIntPipe)),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", []),
+    __metadata("design:paramtypes", [Number]),
     __metadata("design:returntype", Promise)
 ], CartsController.prototype, "deleteCart", null);
 CartsController = __decorate([

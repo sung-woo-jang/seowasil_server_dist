@@ -1,3 +1,4 @@
+import { ProductDetailImagesRepository } from './../product-detail-images/product-detail-images.respsitory';
 import { CategoriesRepository } from './../categories/categories.repository';
 import { UpdateProductDto } from './dto/update-product.dto';
 import { CreateProductDto } from './dto/create-product.dto';
@@ -8,7 +9,8 @@ export declare class ProductsService {
     private productsRepository;
     private categoriesRepository;
     private productImageRepository;
-    constructor(productsRepository: ProductsRepository, categoriesRepository: CategoriesRepository, productImageRepository: ProductImageRepository);
+    private productDetailImagesRepository;
+    constructor(productsRepository: ProductsRepository, categoriesRepository: CategoriesRepository, productImageRepository: ProductImageRepository, productDetailImagesRepository: ProductDetailImagesRepository);
     createProduct(createProductDto: CreateProductDto): Promise<Product>;
     getProductDetail(id: number): Promise<Product>;
     getProductList(): Promise<Product[]>;

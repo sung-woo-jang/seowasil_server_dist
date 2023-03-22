@@ -13,6 +13,7 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ProductsService = void 0;
+const product_detail_images_respsitory_1 = require("./../product-detail-images/product-detail-images.respsitory");
 const categories_repository_1 = require("./../categories/categories.repository");
 const typeorm_1 = require("@nestjs/typeorm");
 const common_1 = require("@nestjs/common");
@@ -20,10 +21,11 @@ const products_repository_1 = require("./products.repository");
 const product_entity_1 = require("./entities/product.entity");
 const product_images_repository_1 = require("../product-images/product-images.repository");
 let ProductsService = class ProductsService {
-    constructor(productsRepository, categoriesRepository, productImageRepository) {
+    constructor(productsRepository, categoriesRepository, productImageRepository, productDetailImagesRepository) {
         this.productsRepository = productsRepository;
         this.categoriesRepository = categoriesRepository;
         this.productImageRepository = productImageRepository;
+        this.productDetailImagesRepository = productDetailImagesRepository;
     }
     async createProduct(createProductDto) {
         const category = await this.categoriesRepository.findOne({
@@ -32,8 +34,12 @@ let ProductsService = class ProductsService {
         const productImageUrl = await this.productImageRepository.findOne({
             id: createProductDto.productImage_id,
         });
+        const productDetailImagesUrl = await this.productDetailImagesRepository.findOne({
+            id: createProductDto.productDetailImage_id,
+        });
         const product = await this.productsRepository.save(Object.assign(Object.assign({}, createProductDto), { category,
-            productImageUrl }));
+            productImageUrl,
+            productDetailImagesUrl }));
         return this.productsRepository.getProductDetail(product.id);
     }
     async getProductDetail(id) {
@@ -63,9 +69,11 @@ ProductsService = __decorate([
     __param(0, (0, typeorm_1.InjectRepository)(products_repository_1.ProductsRepository)),
     __param(1, (0, typeorm_1.InjectRepository)(categories_repository_1.CategoriesRepository)),
     __param(2, (0, typeorm_1.InjectRepository)(product_images_repository_1.ProductImageRepository)),
+    __param(3, (0, typeorm_1.InjectRepository)(product_detail_images_respsitory_1.ProductDetailImagesRepository)),
     __metadata("design:paramtypes", [products_repository_1.ProductsRepository,
         categories_repository_1.CategoriesRepository,
-        product_images_repository_1.ProductImageRepository])
+        product_images_repository_1.ProductImageRepository,
+        product_detail_images_respsitory_1.ProductDetailImagesRepository])
 ], ProductsService);
 exports.ProductsService = ProductsService;
 //# sourceMappingURL=products.service.js.map

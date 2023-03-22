@@ -12,9 +12,7 @@ export declare class ContactsController {
         category: string;
     } & import("./entities/contact.entity").Contact>;
     getContactList(): Promise<import("./entities/contact.entity").Contact[]>;
-    getContact(id: number, { password }: {
-        password: any;
-    }): Promise<import("./entities/contact.entity").Contact>;
+    getContact(id: number): Promise<import("./entities/contact.entity").Contact>;
     updateContact(updateContactDto: UpdateContactDto, id: number): Promise<import("typeorm").UpdateResult>;
     deleteContact(id: number): Promise<import("typeorm").DeleteResult>;
 }

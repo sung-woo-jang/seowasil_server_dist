@@ -16,7 +16,7 @@ const class_validator_1 = require("class-validator");
 const category_entity_1 = require("../../categories/entities/category.entity");
 const product_image_entity_1 = require("../../product-images/entities/product-image.entity");
 const order_entity_1 = require("./../../orders/entities/order.entity");
-const product_thumbnail_entity_1 = require("../../product-thumbnail/entities/product-thumbnail.entity");
+const product_thumbnail_entity_1 = require("../../product-detail-images/entities/product-thumbnail.entity");
 const cart_entity_1 = require("../../carts/entities/cart.entity");
 var Status;
 (function (Status) {
@@ -101,13 +101,13 @@ __decorate([
     __metadata("design:type", product_image_entity_1.ProductImage)
 ], Product.prototype, "productImageUrl", void 0);
 __decorate([
-    (0, typeorm_1.OneToOne)(() => product_thumbnail_entity_1.ProductThumbnail),
+    (0, typeorm_1.OneToOne)(() => product_thumbnail_entity_1.ProductDetailImages),
     (0, typeorm_1.JoinColumn)({
-        name: 'productThumbnailImageUrl_id',
+        name: 'productDetailImagesUrl_id',
         referencedColumnName: 'id',
     }),
-    __metadata("design:type", product_thumbnail_entity_1.ProductThumbnail)
-], Product.prototype, "productThumbnailImageUrl", void 0);
+    __metadata("design:type", product_thumbnail_entity_1.ProductDetailImages)
+], Product.prototype, "productDetailImagesUrl", void 0);
 Product = __decorate([
     (0, typeorm_1.Entity)()
 ], Product);

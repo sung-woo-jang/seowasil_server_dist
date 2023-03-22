@@ -11,5 +11,5 @@ export declare class CartsService {
     getCartDetail(id: number): Promise<import("./entities/cart.entity").Cart>;
     getCartByUser(userId: number): Promise<any[]>;
     updateCart(): Promise<import("./entities/cart.entity").Cart[]>;
-    deleteCart(): Promise<import("./entities/cart.entity").Cart[]>;
+    deleteCart(id: number): Promise<import("typeorm").DeleteResult>;
 }

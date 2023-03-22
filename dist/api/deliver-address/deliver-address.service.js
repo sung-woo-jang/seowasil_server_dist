@@ -27,8 +27,14 @@ let DeliverAddressService = class DeliverAddressService {
         const user = await this.usersRepository.getById(user_id);
         return await this.deliverAddressRepository.createAddress(createDeliverAddressDto, user);
     }
-    async getDeliveryAddressesListByUserId(user_id) {
-        return await this.deliverAddressRepository.getDeliveryAddressesListByUserId(user_id);
+    async getDeliveryAddresses(user_id) {
+        return await this.deliverAddressRepository.getDeliveryAddresses(user_id);
+    }
+    async getDefaultDeliveryAddresses(user_id) {
+        return await this.deliverAddressRepository.getDefaultDeliveryAddresses(user_id);
+    }
+    async updateDefaultDeliverAddressByUserId(updateDeliverAddressDto) {
+        return await this.deliverAddressRepository.updateDefaultDeliverAddressByUserId(updateDeliverAddressDto);
     }
 };
 DeliverAddressService = __decorate([

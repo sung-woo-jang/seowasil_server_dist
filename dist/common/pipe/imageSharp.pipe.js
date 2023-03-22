@@ -6,18 +6,22 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.SharpPipe = void 0;
+exports.ImageSharpPipe = void 0;
 const common_1 = require("@nestjs/common");
 const sharp = require("sharp");
-let SharpPipe = class SharpPipe {
-    async transform(image) {
-        const result = await sharp(image.buffer).resize(600, 600).toBuffer();
-        image.buffer = result;
-        return image;
+let ImageSharpPipe = class ImageSharpPipe {
+    async transform(files) {
+        return await Promise.all(files.map(async (file) => {
+            const resultBuffer = await sharp(file.buffer)
+                .resize(600, 600)
+                .toBuffer();
+            file.buffer = resultBuffer;
+            return file;
+        }));
     }
 };
-SharpPipe = __decorate([
+ImageSharpPipe = __decorate([
     (0, common_1.Injectable)()
-], SharpPipe);
-exports.SharpPipe = SharpPipe;
-//# sourceMappingURL=sharp.pipe.js.map
+], ImageSharpPipe);
+exports.ImageSharpPipe = ImageSharpPipe;
+//# sourceMappingURL=imageSharp.pipe.js.map

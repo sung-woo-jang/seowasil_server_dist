@@ -19,7 +19,7 @@ const orders_module_1 = require("./api/orders/orders.module");
 const deliver_address_module_1 = require("./api/deliver-address/deliver-address.module");
 const products_module_1 = require("./api/products/products.module");
 const product_images_module_1 = require("./api/product-images/product-images.module");
-const product_thumbnail_module_1 = require("./api/product-thumbnail/product-thumbnail.module");
+const product_detail_images_module_1 = require("./api/product-detail-images/product-detail-images.module");
 const categories_module_1 = require("./api/categories/categories.module");
 const notices_module_1 = require("./api/notices/notices.module");
 const carts_module_1 = require("./api/carts/carts.module");
@@ -62,7 +62,7 @@ AppModule = __decorate([
             deliver_address_module_1.DeliverAddressModule,
             products_module_1.ProductsModule,
             product_images_module_1.ProductImagesModule,
-            product_thumbnail_module_1.ProductThumbnailModule,
+            product_detail_images_module_1.ProductDetailImagesModule,
             categories_module_1.CategoriesModule,
             notices_module_1.NoticesModule,
             carts_module_1.CartsModule,

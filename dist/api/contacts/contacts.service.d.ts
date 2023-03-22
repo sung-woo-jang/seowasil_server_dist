@@ -13,7 +13,7 @@ export declare class ContactsService {
         category: string;
     } & Contact>;
     getContactList(): Promise<Contact[]>;
-    getContact(id: number, password: string): Promise<Contact>;
+    getContact(id: number): Promise<Contact>;
     updateContact(updateContactDto: UpdateContactDto, id: number): Promise<import("typeorm").UpdateResult>;
     deleteContact(id: number): Promise<import("typeorm").DeleteResult>;
 }

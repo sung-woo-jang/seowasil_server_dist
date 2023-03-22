@@ -37,6 +37,7 @@ let CartsRepository = class CartsRepository extends typeorm_1.Repository {
             .leftJoinAndSelect('product.productImageUrl', 'productImageUrl')
             .leftJoinAndSelect('product.category', 'category')
             .leftJoinAndSelect('cart.user', 'user')
+            .addSelect('true', 'is_selected')
             .select([
             'cart.id as id',
             'cart.amount as amount',
@@ -46,6 +47,7 @@ let CartsRepository = class CartsRepository extends typeorm_1.Repository {
             'product.sellPrice as sell_Price',
             'category.name as category',
             'productImageUrl.storedFileName as stored_File_Name',
+            'true as is_selected',
         ])
             .where('cart.paymentStatus = :status', {
             status: cart_entity_1.PaymentStatus.WAITING,

@@ -1,1 +1,1 @@
-{"version":3,"file":"update-deliver-address.dto.js","sourceRoot":"","sources":["../../../../src/api/deliver-address/dto/update-deliver-address.dto.ts"],"names":[],"mappings":";;;AAAA,6CAA8C;AAC9C,6EAAuE;AAEvE,MAAa,uBAAwB,SAAQ,IAAA,qBAAW,EAAC,oDAAuB,CAAC;CAAG;AAApF,0DAAoF"}
+{"version":3,"file":"update-deliver-address.dto.js","sourceRoot":"","sources":["../../../../src/api/deliver-address/dto/update-deliver-address.dto.ts"],"names":[],"mappings":";;;AAAA,6CAA2C;AAC3C,6EAAuE;AAEvE,MAAa,uBAAwB,SAAQ,IAAA,kBAAQ,EAAC,oDAAuB,EAAE;IAC7E,SAAS;CACD,CAAC;CAEV;AAJD,0DAIC"}

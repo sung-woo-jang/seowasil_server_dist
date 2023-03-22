@@ -13,6 +13,7 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.DeliverAddressController = void 0;
+const update_deliver_address_dto_1 = require("./dto/update-deliver-address.dto");
 const skip_auth_decorator_1 = require("./../../common/decorators/skip-auth.decorator");
 const create_deliver_address_dto_1 = require("./dto/create-deliver-address.dto");
 const common_1 = require("@nestjs/common");
@@ -24,8 +25,14 @@ let DeliverAddressController = class DeliverAddressController {
     async createAddress(createDeliverAddressDto) {
         return this.deliverAddressService.createAddress(createDeliverAddressDto);
     }
-    async getDeliveryAddressesListByUserId(user_id) {
-        return await this.deliverAddressService.getDeliveryAddressesListByUserId(user_id);
+    async getDeliveryAddresses(user_id) {
+        return await this.deliverAddressService.getDeliveryAddresses(user_id);
+    }
+    async getDefaultDeliveryAddresses(user_id) {
+        return await this.deliverAddressService.getDefaultDeliveryAddresses(user_id);
+    }
+    async updateDefaultDeliverAddressByUserId(updateDeliverAddressDto) {
+        return await this.deliverAddressService.updateDefaultDeliverAddressByUserId(updateDeliverAddressDto);
     }
 };
 __decorate([
@@ -41,7 +48,21 @@ __decorate([
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Number]),
     __metadata("design:returntype", Promise)
-], DeliverAddressController.prototype, "getDeliveryAddressesListByUserId", null);
+], DeliverAddressController.prototype, "getDeliveryAddresses", null);
+__decorate([
+    (0, common_1.Get)('/isDefault/:user_id'),
+    __param(0, (0, common_1.Param)('user_id', common_1.ParseIntPipe)),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Number]),
+    __metadata("design:returntype", Promise)
+], DeliverAddressController.prototype, "getDefaultDeliveryAddresses", null);
+__decorate([
+    (0, common_1.Patch)(),
+    __param(0, (0, common_1.Body)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [update_deliver_address_dto_1.UpdateDeliverAddressDto]),
+    __metadata("design:returntype", Promise)
+], DeliverAddressController.prototype, "updateDefaultDeliverAddressByUserId", null);
 DeliverAddressController = __decorate([
     (0, skip_auth_decorator_1.Public)(),
     (0, common_1.Controller)('deliver-address'),

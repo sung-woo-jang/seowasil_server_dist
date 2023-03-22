@@ -14,7 +14,7 @@ let DeliverAddressRepository = class DeliverAddressRepository extends typeorm_1.
         const result = await this.create(Object.assign(Object.assign({}, createDeliverAddressDto), { user })).save();
         return result;
     }
-    async getDeliveryAddressesListByUserId(user_id) {
+    async getDeliveryAddresses(user_id) {
         const query = this.createQueryBuilder('deliver_address')
             .leftJoinAndSelect('deliver_address.user', 'user')
             .select([
@@ -22,10 +22,50 @@ let DeliverAddressRepository = class DeliverAddressRepository extends typeorm_1.
             'deliver_address.address1 as address1',
             'deliver_address.address2 as address2',
             'deliver_address.address3 as address3',
+            'deliver_address.is_default as is_default',
         ])
             .where('user.id = :user_id', { user_id });
         const result = await query.getRawMany();
         return result;
+    }
+    async getDefaultDeliveryAddresses(user_id) {
+        const query = this.createQueryBuilder('deliver_address')
+            .leftJoinAndSelect('deliver_address.user', 'user')
+            .select([
+            'deliver_address.id as id',
+            'deliver_address.address1 as address1',
+            'deliver_address.address2 as address2',
+            'deliver_address.address3 as address3',
+            'deliver_address.is_default as is_default',
+        ])
+            .where('user.id = :user_id', { user_id })
+            .andWhere('deliver_address.is_default = :isDefault', { isDefault: true });
+        const result = await query.getRawOne();
+        return result;
+    }
+    async updateDefaultDeliverAddressByUserId(updateDeliverAddressDto) {
+        const { id, user_id } = updateDeliverAddressDto;
+        const query = this.createQueryBuilder('deliver_address').leftJoinAndSelect('deliver_address.user', 'user');
+        await query
+            .update()
+            .set({ isDefault: false })
+            .where('id != :id', { id })
+            .andWhere('user.id = :user_id', { user_id })
+            .execute();
+        await query
+            .update()
+            .set({ isDefault: true })
+            .where('id = :id', { id })
+            .execute();
+        return await query
+            .select([
+            'deliver_address.id as id',
+            'deliver_address.address1 as address1',
+            'deliver_address.address2 as address2',
+            'deliver_address.address3 as address3',
+            'deliver_address.is_default as is_default',
+        ])
+            .getRawMany();
     }
 };
 DeliverAddressRepository = __decorate([

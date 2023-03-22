@@ -6,19 +6,19 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.ProductThumbnailRepository = void 0;
+exports.ProductDetailImagesRepository = void 0;
 const product_thumbnail_entity_1 = require("./entities/product-thumbnail.entity");
 const typeorm_1 = require("typeorm");
-let ProductThumbnailRepository = class ProductThumbnailRepository extends typeorm_1.Repository {
-    async registerThumbnailImageUrl(imgurl) {
+let ProductDetailImagesRepository = class ProductDetailImagesRepository extends typeorm_1.Repository {
+    async registerDetailImagesUrl(imgurl) {
         const result = await this.create({
             storedFileName: imgurl,
         }).save();
         return result;
     }
 };
-ProductThumbnailRepository = __decorate([
-    (0, typeorm_1.EntityRepository)(product_thumbnail_entity_1.ProductThumbnail)
-], ProductThumbnailRepository);
-exports.ProductThumbnailRepository = ProductThumbnailRepository;
-//# sourceMappingURL=product-thumbnail.respsitory.js.map
+ProductDetailImagesRepository = __decorate([
+    (0, typeorm_1.EntityRepository)(product_thumbnail_entity_1.ProductDetailImages)
+], ProductDetailImagesRepository);
+exports.ProductDetailImagesRepository = ProductDetailImagesRepository;
+//# sourceMappingURL=product-detail-images.respsitory.js.map

@@ -4,5 +4,6 @@ export declare class DeliverAddress extends CommonEntity {
     address1: string;
     address2: string;
     address3: string;
+    isDefault: boolean;
     user: User;
 }

@@ -20,6 +20,7 @@ let ProductsRepository = class ProductsRepository extends typeorm_1.Repository {
         const result = await query
             .leftJoinAndSelect('product.category', 'category')
             .leftJoinAndSelect('product.productImageUrl', 'productImageUrl')
+            .leftJoinAndSelect('product.productDetailImagesUrl', 'productDetailImagesUrl')
             .select([
             'product.id',
             'product.title',
@@ -30,6 +31,7 @@ let ProductsRepository = class ProductsRepository extends typeorm_1.Repository {
             'product.viewCount',
             'category.name',
             'productImageUrl.storedFileName',
+            'productDetailImagesUrl.storedFileName',
         ])
             .where('product.id = :id', { id })
             .getOne();
@@ -48,7 +50,8 @@ let ProductsRepository = class ProductsRepository extends typeorm_1.Repository {
             'product.createdAt',
             'productImageUrl.storedFileName',
             'category.name',
-        ]);
+        ])
+            .where('product.isBest = :isBest', { isBest: false });
         const result = await query.getMany();
         return result;
     }
