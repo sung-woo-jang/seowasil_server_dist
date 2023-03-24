@@ -10,6 +10,29 @@ exports.OrdersRepository = void 0;
 const order_entity_1 = require("./entities/order.entity");
 const typeorm_1 = require("typeorm");
 let OrdersRepository = class OrdersRepository extends typeorm_1.Repository {
+    async createOrder(createOrderDto) {
+        const result = await this.save(Object.assign({}, createOrderDto));
+        return result;
+    }
+    async getOrderList() {
+        const query = this.createQueryBuilder('order').leftJoinAndSelect('order.product', 'product');
+        const result = await query
+            .select([
+            'order.id',
+            'order.name',
+            'order.phoneNumber',
+            'order.deliveryRequest',
+            'order.address1',
+            'order.address2',
+            'order.address3',
+            'order.amount',
+            'order.price',
+            'product.title',
+        ])
+            .orderBy('order.createdAt', 'ASC')
+            .getMany();
+        return result;
+    }
 };
 OrdersRepository = __decorate([
     (0, typeorm_1.EntityRepository)(order_entity_1.Order)

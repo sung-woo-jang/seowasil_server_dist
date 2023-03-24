@@ -7,6 +7,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.UsersModule = void 0;
+const deliver_address_repository_1 = require("./../deliver-address/deliver-address.repository");
 const config_1 = require("@nestjs/config");
 const jwt_1 = require("@nestjs/jwt");
 const auth_service_1 = require("./../auth/auth.service");
@@ -20,7 +21,7 @@ let UsersModule = class UsersModule {
 UsersModule = __decorate([
     (0, common_1.Module)({
         imports: [
-            typeorm_1.TypeOrmModule.forFeature([users_repository_1.UsersRepository]),
+            typeorm_1.TypeOrmModule.forFeature([users_repository_1.UsersRepository, deliver_address_repository_1.DeliverAddressRepository]),
             jwt_1.JwtModule.registerAsync({
                 imports: [config_1.ConfigModule],
                 inject: [config_1.ConfigService],

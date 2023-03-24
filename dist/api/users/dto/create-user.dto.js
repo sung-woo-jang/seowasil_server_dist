@@ -25,5 +25,20 @@ __decorate([
     (0, class_validator_1.IsNotEmpty)({ message: '비밀번호를 작성해주세요.' }),
     __metadata("design:type", String)
 ], CreateUserDto.prototype, "password", void 0);
+__decorate([
+    (0, class_validator_1.IsString)(),
+    (0, class_validator_1.IsNotEmpty)({ message: '비밀번호를 작성해주세요.' }),
+    __metadata("design:type", String)
+], CreateUserDto.prototype, "address1", void 0);
+__decorate([
+    (0, class_validator_1.IsString)(),
+    (0, class_validator_1.IsNotEmpty)({ message: '비밀번호를 작성해주세요.' }),
+    __metadata("design:type", String)
+], CreateUserDto.prototype, "address2", void 0);
+__decorate([
+    (0, class_validator_1.IsString)(),
+    (0, class_validator_1.IsNotEmpty)({ message: '비밀번호를 작성해주세요.' }),
+    __metadata("design:type", String)
+], CreateUserDto.prototype, "address3", void 0);
 exports.CreateUserDto = CreateUserDto;
 //# sourceMappingURL=create-user.dto.js.map

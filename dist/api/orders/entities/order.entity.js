@@ -14,6 +14,7 @@ const product_entity_1 = require("../../products/entities/product.entity");
 const typeorm_1 = require("typeorm");
 const common_entity_1 = require("../../../common/entities/common.entity");
 const user_entity_1 = require("../../users/entities/user.entity");
+const class_transformer_1 = require("class-transformer");
 let Order = class Order extends common_entity_1.CommonEntity {
 };
 __decorate([
@@ -41,6 +42,7 @@ __decorate([
     __metadata("design:type", String)
 ], Order.prototype, "address3", void 0);
 __decorate([
+    (0, class_transformer_1.Transform)(({ value }) => Number(value)),
     (0, typeorm_1.Column)({ type: 'integer', comment: '주문 수량', nullable: false }),
     __metadata("design:type", Number)
 ], Order.prototype, "amount", void 0);

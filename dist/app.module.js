@@ -29,6 +29,7 @@ const auth_module_1 = require("./api/auth/auth.module");
 const core_1 = require("@nestjs/core");
 const images_module_1 = require("./api/images/images.module");
 const s3_module_1 = require("./api/s3/s3.module");
+const sms_module_1 = require("./api/sms/sms.module");
 let AppModule = class AppModule {
     configure(consumer) {
         consumer.apply(logger_middleware_1.LoggerMiddleware).forRoutes('*');
@@ -54,6 +55,10 @@ AppModule = __decorate([
                     AWS_ACCESS_KEY: Joi.string().required(),
                     AWS_SECRET_KEY: Joi.string().required(),
                     AWS_S3_BUCKET_NAME: Joi.string().required(),
+                    NCP_SENS_ACCESS_KEY: Joi.string().required(),
+                    NCP_SENS_SECRET_KEY: Joi.string().required(),
+                    NCP_SENS_ID: Joi.string().required(),
+                    NCP_SENS_URI: Joi.string().required(),
                 }),
             }),
             typeorm_1.TypeOrmModule.forRootAsync(typeorm_config_1.typeOrmAsyncModuleOptions),
@@ -71,6 +76,7 @@ AppModule = __decorate([
             auth_module_1.AuthModule,
             images_module_1.ImagesModule,
             s3_module_1.S3Module,
+            sms_module_1.SmsModule,
         ],
         providers: [{ provide: core_1.APP_GUARD, useClass: jwt_auth_guard_1.JwtAuthGuard }],
     })

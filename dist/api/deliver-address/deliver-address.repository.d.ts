@@ -7,5 +7,5 @@ export declare class DeliverAddressRepository extends Repository<DeliverAddress>
     createAddress(createDeliverAddressDto: CreateDeliverAddressDto, user: User): Promise<DeliverAddress>;
     getDeliveryAddresses(user_id: number): Promise<any[]>;
     getDefaultDeliveryAddresses(user_id: number): Promise<any>;
-    updateDefaultDeliverAddressByUserId(updateDeliverAddressDto: UpdateDeliverAddressDto): Promise<any[]>;
+    updateDefaultDeliverAddressByUserId(updateDeliverAddressDto: UpdateDeliverAddressDto): Promise<any>;
 }

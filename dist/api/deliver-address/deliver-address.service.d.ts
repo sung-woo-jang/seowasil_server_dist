@@ -9,5 +9,5 @@ export declare class DeliverAddressService {
     createAddress(createDeliverAddressDto: CreateDeliverAddressDto): Promise<import("./entities/deliver-address.entity").DeliverAddress>;
     getDeliveryAddresses(user_id: number): Promise<any[]>;
     getDefaultDeliveryAddresses(user_id: number): Promise<any>;
-    updateDefaultDeliverAddressByUserId(updateDeliverAddressDto: UpdateDeliverAddressDto): Promise<any[]>;
+    updateDefaultDeliverAddressByUserId(updateDeliverAddressDto: UpdateDeliverAddressDto): Promise<any>;
 }

@@ -13,6 +13,7 @@ exports.typeOrmAsyncModuleOptions = {
         database: process.env.DATABASE,
         entities: [__dirname + '/../**/*.entity.{js,ts}'],
         synchronize: true,
+        logging: process.env.MODE == 'dev',
     }),
 };
 //# sourceMappingURL=typeorm.config.js.map

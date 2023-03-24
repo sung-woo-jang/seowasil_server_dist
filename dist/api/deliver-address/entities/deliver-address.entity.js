@@ -32,7 +32,7 @@ __decorate([
         type: 'boolean',
         comment: '기본 배송 주소',
         nullable: false,
-        default: false,
+        default: true,
     }),
     __metadata("design:type", Boolean)
 ], DeliverAddress.prototype, "isDefault", void 0);

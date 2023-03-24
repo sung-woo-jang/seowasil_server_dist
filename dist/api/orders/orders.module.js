@@ -7,6 +7,10 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.OrdersModule = void 0;
+const products_repository_1 = require("./../products/products.repository");
+const users_repository_1 = require("./../users/users.repository");
+const axios_1 = require("@nestjs/axios");
+const sms_service_1 = require("./../sms/sms.service");
 const orders_repository_1 = require("./orders.repository");
 const typeorm_1 = require("@nestjs/typeorm");
 const common_1 = require("@nestjs/common");
@@ -16,9 +20,16 @@ let OrdersModule = class OrdersModule {
 };
 OrdersModule = __decorate([
     (0, common_1.Module)({
-        imports: [typeorm_1.TypeOrmModule.forFeature([orders_repository_1.OrdersRepository])],
+        imports: [
+            typeorm_1.TypeOrmModule.forFeature([
+                orders_repository_1.OrdersRepository,
+                users_repository_1.UsersRepository,
+                products_repository_1.ProductsRepository,
+            ]),
+            axios_1.HttpModule,
+        ],
         controllers: [orders_controller_1.OrdersController],
-        providers: [orders_service_1.OrdersService],
+        providers: [orders_service_1.OrdersService, sms_service_1.SmsService],
     })
 ], OrdersModule);
 exports.OrdersModule = OrdersModule;
